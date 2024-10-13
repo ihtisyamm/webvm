@@ -51,9 +51,9 @@
           <pre style="font-family: monospace; font-weight: 600; font-size: large; color: #ad7fa8;">
 
 __      __   _  __   ____  __
-\ \    / /__| |_\ \ / /  \/  |
+\ \    / /__| |_\ \ / /  \/  | fuck it 
  \ \/\/ / -_) '_ \ V /| |\/| |
-  \_/\_/\___|_.__/\_/ |_|  |_|
+  \_/\_/\___|_.__/\_/ |_|  |_| oi
           </pre>
           <div style="height:100%;display: flex; flex-direction: column;justify-content: space-between;">
             <div style="padding-top: 0.7em;font-size: 0.3em; font-weight: 200;vertical-align:center;height:50px;">
@@ -265,19 +265,19 @@ __      __   _  __   ____  __
 	async function runBash()
 	{
 		// cmd, cwd, args and env are replaced by the Github actions workflow.
-		var cmd = CMD;
-		var args = ARGS;
-		var env = ENV;
-		var cwd = CWD;
-		var device_type = DEVICE_TYPE;
-		var image_url = IMAGE_URL;
+		// var cmd = CMD;
+		// var args = ARGS;
+		// var env = ENV;
+		// var cwd = CWD;
+		// var device_type = DEVICE_TYPE;
+		// var image_url = IMAGE_URL;
 		// Reasonable defaults for local deployments
-		// var cmd = "/bin/bash";
-		// var args = ["--login"];
-		// var env = ["HOME=/home/user", "TERM=xterm", "USER=user", "SHELL=/bin/bash", "EDITOR=vim", "LANG=en_US.UTF-8", "LC_ALL=C"];
-		// var cwd = "/home/user";
-		// var device_type = "bytes";
-		// var image_url = "/your_local_image.ext2";
+		var cmd = "/bin/bash";
+		var args = ["--login"];
+		var env = ["HOME=/home/user", "TERM=xterm", "USER=user", "SHELL=/bin/bash", "EDITOR=vim", "LANG=en_US.UTF-8", "LC_ALL=C"];
+		var cwd = "/home/user";
+		var device_type = "bytes";
+		var image_url = "/debian_mini_20230519_5022088024.ext2";
 		const structure = {
 			cmd: cmd,
 			args: args,
@@ -389,12 +389,14 @@ __      __   _  __   ____  __
 		var dataDevice = await CheerpX.DataDevice.create();
 		CheerpX.Linux.create({mounts:[{type:"ext2",dev:overlayDevice,path:"/"},{type:"dir",dev:webDevice,path:"/app"},{type:"dir",dev:dataDevice,path:"/data"},{type:"devs",path:"/dev"},{type:"proc",path:"/proc"}], networkInterface: networkInterface}).then(runTest, failCallback);
 	}
+	/*
 	function initialMessage()
 	{
 		printOnTerm.printMessage(printOnTerm.getAsciiText());
 		console.log("Welcome. We appreciate curiosity, but be warned that keeping the DevTools open causes significant performance degradation and crashes.");
 	}
 	initialMessage();
+	*/
 	async function loadCX()
 	{
 		// Find the latest build
